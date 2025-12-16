@@ -1,0 +1,68 @@
+Atributos de SpriteRenderer
+•	sprite: imagen que se renderiza.
+•	color: color del sprite, incluyendo transparencia.
+•	flipX / flipY: voltea el sprite horizontal o verticalmente.
+•	material: material usado para renderizar (puede incluir shaders).
+•	sortingLayerID / sortingLayerName: capa de ordenamiento para controlar qué se dibuja encima.
+•	sortingOrder: orden dentro de la capa; valores más altos se dibujan encima.
+•	drawMode: modo de dibujo (Simple, Sliced, Tiled).
+•	size: tamaño del sprite (solo si drawMode ≠ Simple).
+•	maskInteraction: interacción con máscaras (None, VisibleInsideMask, etc.).
+•	tileMode: modo de repetición del sprite (Continuous, Adaptive).
+•	enabled: activa o desactiva el renderizado.
+•	bounds: límites del sprite en el espacio mundial.
+•	isVisible: indica si el sprite está siendo renderizado por alguna cámara.
+•	receiveShadows / shadowCastingMode: control de sombras (en URP/HDRP).
+
+________________________________________
+Atributos de BoxCollider2D
+•	size: ancho y alto del collider.
+•	offset: desplazamiento del collider respecto al centro del objeto.
+•	isTrigger: si está activado, no genera colisiones físicas, solo eventos.
+•	usedByEffector: permite que el collider sea usado por un Effector2D.
+•	usedByComposite: combina el collider con un CompositeCollider2D.
+•	autoTiling: ajusta el collider automáticamente si el sprite usa modo Tiled.
+•	edgeRadius: redondea las esquinas del collider.
+•	sharedMaterial: asigna un PhysicsMaterial2D para controlar fricción y rebote.
+•	enabled: activa o desactiva el collider.
+•	bounds: límites del collider en el espacio mundial.
+
+________________________________________
+Atributos de Rigidbody2D
+•	bodyType: tipo de cuerpo (Dynamic, Kinematic, Static).
+•	mass: masa del objeto.
+•	gravityScale: escala de gravedad aplicada.
+•	drag: resistencia al movimiento lineal.
+•	angularDrag: resistencia al giro.
+•	velocity: velocidad lineal actual.
+•	angularVelocity: velocidad de rotación.
+•	isKinematic: si está activado, el objeto no responde a la física automáticamente.
+•	interpolation: suaviza el movimiento (None, Interpolate, Extrapolate).
+•	collisionDetectionMode: modo de detección de colisiones (Discrete, Continuous).
+•	constraints: restringe movimiento o rotación en ciertos ejes.
+•	centerOfMass: centro de masa local.
+•	inertia: resistencia al cambio de rotación.
+•	simulated: activa o desactiva la simulación física.
+•	sleepMode: define si el objeto puede entrar en modo "dormido".
+•	useAutoMass: calcula la masa automáticamente según la densidad.
+•	worldCenterOfMass: centro de masa en coordenadas globales.
+
+using UnityEngine;
+
+public class ModificarAtributos : MonoBehaviour
+{
+    void Start()
+    {
+        // SpriteRenderer: cambiar el color del sprite a rojo con transparencia
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+        sr.color = new Color(1f, 0f, 0f, 0.5f); // rojo semi-transparente
+
+        // BoxCollider2D: activar como trigger
+        BoxCollider2D bc = GetComponent<BoxCollider2D>();
+        bc.isTrigger = true;
+
+        // Rigidbody2D: aumentar la gravedad
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 2.5f;
+    }
+}
